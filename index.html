@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+    <title>Find A Show!</title>
+    
+
+</head>
+
+<body>
+
+
+    <div class="container text-center">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <h1 id="startMenu" class="text-center" hidden>Find New Shows!</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <button id="startBtn" hidden>Get Started</button>
+                <div class="jumbotron" hidden>
+
+                    <!-- QUETION 1: Right/Wrong Elements -->
+                    <div id="enterBand-Div" hidden>
+                      
+                        <h2> Enter Your Favorite Band</h3>
+                            <hr>
+                            <br>
+                            
+                                    <div class="form-group">
+                                    <form>
+                                
+                                      <input type="email" class="form-control" id="band-input" aria-describedby="emailHelp" placeholder="Enter a Band!">
+                                     
+                                    
+                                    <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
+                                  </form>
+
+                         </div>   
+                    </div>
+                    <ol id="bands-view" hidden></ol>      
+
+                </div>
+            </div>
+
+                    
+
+                 
+    </div>
+</body>
+<script type="text/javascript" src="./assets/JS/scripts.js"></script>
+
+</html>
