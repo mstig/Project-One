@@ -12,7 +12,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: "https://app.ticketmaster.com/discovery/v2/events.json?size=10&apikey=" + ticketAPI + "&postalCode=" + zipCode + "&radius=100" + "&keyword=" + bandName,
+            url: "https://app.ticketmaster.com/discovery/v1/events.json?apikey=" + ticketAPI + "&keyword=" + bandName,
             dataType: "json",
             success: function (response) {
                 console.log(response);
@@ -25,7 +25,7 @@ $(document).ready(function () {
         });
     });
 
-
+ 
 
 
 });
