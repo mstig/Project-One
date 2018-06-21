@@ -31,11 +31,14 @@ $(document).ready(function () {
         }).then(function(response) {
           
           var bandsReturn = response.similarartists.artist
+          console.log(bandsReturn);
   
           for (i = 0; i < 10; i++) { 
                 console.log(bandsReturn[i].name);
 
             $("#enterBand-Div").hide(1000);
+            $("#bands-view-header").text("Similar Artists to " + band);
+            $("#bands-view-header").show();
             $("#bands-view").show(1000);
             $("#bands-view").append("<li hidden>" + bandsReturn[i].name + "</li>" );
             $("li").show(2000);
