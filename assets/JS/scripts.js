@@ -54,9 +54,31 @@ $(document).ready(function () {
             $("#bands-view").show(1000);
             $("#bands-view").append("<li hidden>" + bandsReturn[i].name + "</li>" );
             $("li").show(2000);
+
+            var artistName = response[i].getInfo.artist.name;
+            var artistGenre = response[i].getInfo.artist.tag[0];
+            var artistImage = response[i].getInfo.artist.image[3];
                
           }
 
+          //grab value of bands by ID or class once added
+
+
+
+
+          database.ref().push({
+            artistName: artistName,
+            artistGenre: artistGenre,
+            artistImage: artistImage,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP,
+        }, function(errorObject) {
+            console.log("Errors handled: " + errorObject.code);
+        });
+        
+
+        database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function(snapshot) {
+            console.log(snapshot.val());
+        });
        
    
    
