@@ -67,7 +67,10 @@ $(document).ready(function () {
 
             }
 
-
+            database.ref().push({
+                band: band,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            });
 
 
 
@@ -109,6 +112,20 @@ $(document).ready(function () {
 
     })
 
+    database.ref().on("child_added", function(childSnapshot) {
+        console.log(childSnapshot.val().band);
+
+    }, function(errorObject) {
+        console.log("Errors handled: " + errorObject.code);
+    });
+
+    database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function(childSnapshot) {
+        console.log(childSnapshot.val());
+        for (let val of Object.values(childSnapshot.val())) {
+           console.log(val.band);
+        };
+        
+    });
 
 
 
