@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ticketmaster API test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+
+    <script src="ticketmasterapi.js"></script>
+</head>
+
+<body>
+    <form id="user-input">
+        <label for="band-search">Search for your favorite band</label>
+        <input type="text" name="band-search" id="search-item">
+        <br>
+        <button type="submit" id="submit-button">Search</button>
+    </form>
+    <br>
+
+    <!-- <div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM"
+        w-keyword="Rock" w-theme="listviewthumbnails" w-colorscheme="dark" w-width="650" w-height="600" w-size="25" w-border="2"
+        w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid=""
+        w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="custom" w-titlelink="off" w-sorting="dateAscending" w-id="id_7y8saj"
+        w-source="ticketmaster" w-latlong="37.5312430,-77.4290190"></div>
+    <script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script> -->
+
+    <!-- widget URL: https://developer.ticketmaster.com/products-and-docs/widgets/event-discovery/ -->
+    <!-- Each option has a directly corresponding html tag we can inject user input into, and basically spawn this as a div through a javascript call -->
+    <!-- Can only use radius with latitude/longitude -->
+    <!-- https://stackoverflow.com/questions/5585957/get-latlng-from-zip-code-google-maps-api -->
+    <!-- Example google return:
+        http://maps.googleapis.com/maps/api/geocode/json?address=23113 
+       Use results.geometry.location.lat and results.geometry.location.lng   -->
+
+    <!-- We'll plug the user's search into "w-keyword", zip into google api, and the result lat/long into "w-latlong" in the html elements with a default 100 radius -->
+</body>
+
+</html>

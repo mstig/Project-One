@@ -1,5 +1,19 @@
 $(document).ready(function () {
 
+    // Initializing Firebase
+    var config = {
+        apiKey: "AIzaSyDnUGtk_r_yXM12lOFbZNZp6iZETkMtPNE",
+        authDomain: "project-one-uofr-codecamp-6-18.firebaseapp.com",
+        databaseURL: "https://project-one-uofr-codecamp-6-18.firebaseio.com",
+        projectId: "project-one-uofr-codecamp-6-18",
+        storageBucket: "project-one-uofr-codecamp-6-18.appspot.com",
+        messagingSenderId: "308355480486"
+      };
+      firebase.initializeApp(config);
+
+      var database = firebase.database();
+
+      
 
 
 
