@@ -1,0 +1,20 @@
+body {
+    background-image: url(../images/stacked_circles.png);
+    background-repeat: repeat-xy;
+    
+}
+
+h1 {
+    font-family: 'Shrikhand', cursive;
+
+}
+
+#startDiv{
+    border-radius: 50%;
+    behavior: url(PIE.htc);
+    width: 500px;
+    height: 500px;
+    background: aqua;
+    border: 30px solid blue;
+    text-align: center;
+}
