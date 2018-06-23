@@ -23,7 +23,7 @@ $(document).ready(function () {
 
 
 
-        var band = $("#band-input").val().trim()
+        var band = $("#band-input").val().trim().toUpperCase();
         var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + band + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json"
 
 
@@ -45,10 +45,11 @@ $(document).ready(function () {
                 $("#bands-view").show(1000);
 
                 bandButtons = $("<button hidden>" + bandsReturn[i].name + "</button>");
+                $(bandButtons).addClass("waves-effect waves-light btn-large");
                 $("#bands-view").append(bandButtons);
                 $(bandButtons).addClass("band-return")
                 $(bandButtons).attr("data-band", bandsReturn[i].name)
-                $(".band-return").show(2000);
+                $(".band-return").show(1000);
 
             }
 
@@ -79,10 +80,12 @@ $(document).ready(function () {
 
                 console.log(bandPic);
                 console.log(bandBio);
+
+                $("#band-info-div").empty();
                 
-                $("#bands-view").append("<h1>" + bandInfo + "</h1>")
-                $("<img>").attr("src", bandPic).appendTo("#bands-view");
-                $("#bands-view").append("<p>" + bandBio + "</p>");
+                $("#band-info-div").append("<h1>" + bandInfo + "</h1>")
+                $("<img>").attr("src", bandPic).appendTo("#band-info-div");
+                $("#band-info-div").append("<p>" + bandBio + "</p>");
 
 
 
