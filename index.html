@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
 
     <title>Find A Show!</title>
     
@@ -17,11 +18,11 @@
 
 <body>
 
-
+    <
     <div class="container text-center">
         <div class="row text-center">
             <div class="col-sm-12">
-                <h1 id="startMenu" class="text-center" hidden>Find New Shows!</h1>
+                <h1 id="startMenu" class="text-center" hidden>Find A Show!</h1>
             </div>
         </div>
     </div>
@@ -30,13 +31,14 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <button id="startBtn" hidden>Get Started</button>
+                <button class="waves-effect waves-light btn-large" id="startBtn" hidden>Get Started</button>
+            
                 <div class="jumbotron" hidden>
 
                     <!-- QUESTION 1: Right/Wrong Elements -->
                     <div id="enterBand-Div" hidden>
                       
-                        <h2> Enter Your Favorite Band</h3>
+                        <h1> Enter Your Favorite Band</h1>
                             <hr>
                             <br>
                             
@@ -51,7 +53,8 @@
 
                          </div>   
                     </div>
-                    <ol id="bands-view" hidden></ol>      
+                    <div id="bands-view" hidden></div>  
+                    <div id="band-info-div"></div>  
 
                 </div>
             </div>
