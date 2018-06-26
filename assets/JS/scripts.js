@@ -23,22 +23,34 @@ $(document).ready(function () {
     /// Goes to first question
     $("#startBtn").click(function () {
         $("#startBtn").hide();
-        $(".jumbotron").show(2000);
+        $("#jumbotron1").show(2000);
         $("#enterBand-Div").show();
         $("#startMenu").hide(1000);
 
     })
 
     $("#submitBandBtn").on("click", function () {
+        event.preventDefault();
         if ($("#band-input").val().trim() === "") {
-            alert("you must enter a band.")
+         $('.modal').modal();
+         $('.modal').modal("open");
         }
 
+        $("#jumbotron1").hide(1000);
+        $("#jumbotron2, #jumbotron3").show(2000);
 
 
 
         var band = $("#band-input").val().trim().toUpperCase();
-        var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + band + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json"
+        var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + band + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json"
+
+        $("#ticketmaster-view").prepend("<h5> SHOWS NEAR YOU SIMILAR TO " + band);
+
+
+
+
+
+
 
 
         // Creating an AJAX call for the specific band button being clicked
@@ -46,11 +58,19 @@ $(document).ready(function () {
             url: queryURL,
             method: "GET"
         }).then(function (response) {
+            console.log(response);
 
-            var bandsReturn = response.similarartists.artist
+            var bandsReturn = response.artist.similar.artist;
+            var bandGenre = response.artist.tags.tag[0].name;
+            console.log(bandGenre);
+            console.log(bandsReturn);
 
-            $("#bands-view").append("<h1> Similar Artists to " + band);
-            $("#bands-view").append("<h3> Click a band to learn more!");
+            $("#widget").append('<div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM" w-keyword="' + bandGenre + '" w-theme="listviewthumbnails" w-colorscheme="light" w-width="300" w-height="600" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_msj025" w-source="" w-latlong="37.5462865,-77.4089139"></div>');
+            $("#widget").append('<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>');
+
+            $("#bands-view").append("<h3> SIMILAR ARTISTS TO " + band);
+            $("#bands-view").append("<h5> Click a band to learn more!");
+
 
             for (i = 0; i < 5; i++) {
                 console.log(bandsReturn[i].name);
@@ -101,8 +121,10 @@ $(document).ready(function () {
                 $("#band-info-div").empty();
 
                 $("#band-info-div").append("<h1>" + bandInfo + "</h1>")
-                $("<img>").attr("src", bandPic).appendTo("#band-info-div");
+                $("<img class='img-thumbnail'>").attr("src", bandPic).appendTo("#band-info-div");
+                $("#band-info-div").append("<br>");
                 $("#band-info-div").append("<p>" + bandBio + "</p>");
+                $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 
 
 

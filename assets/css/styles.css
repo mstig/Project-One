@@ -4,17 +4,30 @@ body {
     
 }
 
-h1 {
+h1,h3,h4,h5 {
     font-family: 'Shrikhand', cursive;
 
 }
 
 #startDiv{
     border-radius: 50%;
-    behavior: url(PIE.htc);
-    width: 500px;
-    height: 500px;
-    background: aqua;
-    border: 30px solid blue;
-    text-align: center;
+    
 }
+
+.jumbotron{
+    
+}
+
+#widget{
+    display:flex;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    flex-flow: nowrap;
+    flex-direction: column;
+    
+}
+
+
