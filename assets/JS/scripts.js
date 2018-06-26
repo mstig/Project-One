@@ -8,12 +8,12 @@ $(document).ready(function () {
         projectId: "project-one-uofr-codecamp-6-18",
         storageBucket: "project-one-uofr-codecamp-6-18.appspot.com",
         messagingSenderId: "308355480486"
-      };
-      firebase.initializeApp(config);
+    };
+    firebase.initializeApp(config);
 
-      var database = firebase.database();
+    var database = firebase.database();
 
-      
+
 
 
 
@@ -99,7 +99,7 @@ $(document).ready(function () {
                 console.log(bandBio);
 
                 $("#band-info-div").empty();
-                
+
                 $("#band-info-div").append("<h1>" + bandInfo + "</h1>")
                 $("<img>").attr("src", bandPic).appendTo("#band-info-div");
                 $("#band-info-div").append("<p>" + bandBio + "</p>");
@@ -112,19 +112,23 @@ $(document).ready(function () {
 
     })
 
-    database.ref().on("child_added", function(childSnapshot) {
+    database.ref().on("child_added", function (childSnapshot) {
         console.log(childSnapshot.val().band);
 
-    }, function(errorObject) {
+    }, function (errorObject) {
         console.log("Errors handled: " + errorObject.code);
     });
 
-    database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function(childSnapshot) {
-        console.log(childSnapshot.val());
-        for (let val of Object.values(childSnapshot.val())) {
-           console.log(val.band);
-        };
-        
+    $(document).on("ready", function () {
+
+        database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
+            console.log(childSnapshot.val());
+            for (let val of Object.values(childSnapshot.val())) {
+                console.log(val.band);
+            };
+
+        });
+
     });
 
 
