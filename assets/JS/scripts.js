@@ -8,6 +8,7 @@ $(document).ready(function () {
         storageBucket: "project-one-uofr-codecamp-6-18.appspot.com",
         messagingSenderId: "308355480486"
     };
+    
     firebase.initializeApp(config);
 
     var database = firebase.database();
