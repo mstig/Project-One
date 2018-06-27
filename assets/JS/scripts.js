@@ -75,6 +75,8 @@ $(document).ready(function () {
                 $("#band-info-div").append("<br>");
                 $("#band-info-div").append("<p>" + bandBio + "</p>");
                 $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+
+
                 var youtubeURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relevanceLanguage=en&regionCode=US&q=' + bandInfo + '&key=AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM&type=video';
                 $.ajax({ url: youtubeURL, method: "GET" }).then(function (response) {
                     console.log(response);
@@ -83,6 +85,8 @@ $(document).ready(function () {
                     $("#band-info-div").append("<p>Listen to a sample of " + bandInfo + " here:");
                     $("#band-info-div").append('<iframe width="500" height="315" src="http://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
                 })
+
+                  
             })
         })
     })
