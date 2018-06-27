@@ -22,8 +22,8 @@ $(document).ready(function () {
     $("#submitBandBtn").on("click", function () {
         event.preventDefault();
         if ($("#band-input").val().trim() === "") {
-            $('.modal').modal();
-            $('.modal').modal("open");
+            $('#modal1').modal();
+            $('#modal1').modal("open");
             return false;
         } else {
             $("#jumbotron1").hide(1000);
@@ -96,19 +96,17 @@ $(document).ready(function () {
             })
         })
     })
-})
-database.ref().on("child_added", function (childSnapshot) {
-    console.log(childSnapshot.val().band);
-}, function (errorObject) {
-    console.log("Errors handled: " + errorObject.code);
-});
+
 database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
     console.log(childSnapshot.val());
     for (let val of Object.values(childSnapshot.val())) {
-        var recentSearchButtons = $("<button hidden>" + val.band + "</button>");
-        $(recentSearchButtons).addClass("waves-effect waves-light btn-large");
-        $("#modal-content").append(recentSearchButtons);
-        $(recentSearchButtons).addClass("band-return")
-        $(recentSearchButtons).attr("data-band", val.band);
+        console.log(val.band);
+        recentButtons = $("<button>" + val.band + "</button>");
+        $(recentButtons).addClass("waves-effect waves-light btn-large");
+        $("#recent-searches").append(recentButtons);
+        $(recentButtons).addClass("recent-band-return")
+        $(recentButtons).attr("data-band", val.band);
     };
 });
+
+})
