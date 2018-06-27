@@ -64,6 +64,13 @@ $(document).ready(function () {
                     $(bandButtons).attr("data-band", bandsReturn[i].name)
                     $(".band-return").show(1000);
                 }
+                database.ref().push({
+                    band: band,
+                    dateAdded: firebase.database.ServerValue.TIMESTAMP,
+                });
+                
+                $('#modal2').modal();
+                $('#modal2').modal("open");
             })
         }
     })

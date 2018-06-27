@@ -1,18 +1,27 @@
-<!DOCTYPE html>
+√<!DOCTYPE html>
 
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
-        crossorigin="anonymous"></script>
+    <!-- Reset -->
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS/Style -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <title>Find A Show!</title>
 
@@ -21,9 +30,8 @@
 
 <body>
 
-
-    <div class="container text-center">
-        <div class="row text-center">
+    <div class="container" id="start-container">
+        <div class="row">
             <div class="col-sm-12">
                 <h1 id="startMenu" class="text-center" hidden>Find A Show!</h1>
             </div>
@@ -34,36 +42,59 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <button class="waves-effect waves-light btn-large" id="startBtn" hidden>Get Started</button>
+                <button class="waves-effect waves-light btn-large pulse" id="startBtn" hidden>Get Started!</button>
 
                 <div class="jumbotron" id="jumbotron1" hidden>
 
                     <!-- QUESTION 1: Right/Wrong Elements -->
-                    <div id="enterBand-Div" hidden>
+                    <div  id="enterBand-Div" hidden>
 
                         <h1> Enter Your Favorite Band</h1>
                         <hr>
                         <br>
 
-                        <div class="form-group">
-                            <form>
-
-                                <input type="text" class="form-control" id="band-input" placeholder="Enter Band Name!">
+                        <!-- <div class="form-group">
+                                <form>
+    
+                                    <input type="text" class="form-control" id="band-input" placeholder="Enter Band Name!">
                                 <input type="number" class="form-control" id="zip-input" placeholder="Enter Zip Code">
+    
+    
+                                    <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
+                                </form> -->
+    
 
-                                <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
-                            </form>
-
+                        <div class="form-group">
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class"row">
+                                        <div class="input-field col s12 md6 l6 xl6">
+                                            <!-- <i class="material-icons prefix">group</i> -->
+                                            <input type="text" class="form-control" id="band-input">
+                                            <label for="band-input"><i class="material-icons prefix">group</i>&emsp;&emsp;&emsp;Band Name</label>
+                                        </div>
+                                    </div>
+                                    <div class"row">
+                                        <div class="input-field col s12 md6 l6 xl6">
+                                            <!-- <i class="material-icons prefix">location_on</i> -->
+                                            <input type="text" class="form-control" id="zip-input">
+                                            <label for="zip-input"><i class="material-icons prefix">gps_fixed</i>&emsp;&emsp;&emsp;Zip Code</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
+                                </form>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
+
             </div>
 
-
-
-
         </div>
+
     </div>
 
 
@@ -123,6 +154,9 @@
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
         </div>
+
+
+          
 
 </body>
 <script type="text/javascript" src="./assets/JS/scripts.js"></script>
