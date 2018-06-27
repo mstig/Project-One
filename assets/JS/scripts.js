@@ -105,18 +105,17 @@ $(document).ready(function () {
         })
     })
 
-    database.ref().on("child_added", function (childSnapshot) {
-        console.log(childSnapshot.val().band);
-
-    }, function (errorObject) {
-        console.log("Errors handled: " + errorObject.code);
-    });
-
 
     database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
         console.log(childSnapshot.val());
         for (let val of Object.values(childSnapshot.val())) {
             console.log(val.band);
+            recentButtons = $("<button>" + val.band + "</button>");
+            $(recentButtons).addClass("waves-effect waves-light btn-large");
+            $("#recent-searches").append(recentButtons);
+            $(recentButtons).addClass("recent-band-return")
+            $(recentButtons).attr("data-band", val.name);
+            
         };
     });
 
