@@ -9,7 +9,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
@@ -104,11 +104,25 @@
                 <div class="modal-content">
                   <h4>Whoops! You didn't add a band. </h4>
                   <p>Try again so we can find a couple awesome upcoming shows for you!</p>
+                  <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                  </div>
+                </div>
+            
+          </div>
+
+          <div id="modal2" class="modal bottom-sheet">
+            <div class="modal-content">
+                <table style="width:100%">
+                    <tr id="recent-searches" class="recent-bands">
+    
+                    </tr>
+                  </table>
             </div>
             <div class="modal-footer">
-              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
-          </div>
+        </div>
 
 </body>
 <script type="text/javascript" src="./assets/JS/scripts.js"></script>
