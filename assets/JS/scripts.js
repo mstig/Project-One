@@ -73,9 +73,6 @@ $(document).ready(function () {
             })
         }
     })
-
-
-
     $(document).on("click", ".band-return", function (event) {
         var bandInfo = $(this).attr("data-band");
         var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + bandInfo + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json";
@@ -93,16 +90,38 @@ $(document).ready(function () {
             $("<img class='img-thumbnail'>").attr("src", bandPic).appendTo("#band-info-div");
             $("#band-info-div").append("<br>");
             $("#band-info-div").append("<p>" + bandBio + "</p>");
-            $("html, body").animate({scrollTop: $(".scroll-head").offset().top},'slow');
+            $("html, body").animate({ scrollTop: $(".scroll-head").offset().top }, 'slow');
             var youtubeURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relevanceLanguage=en&regionCode=US&q=' + bandInfo + '&key=AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM&type=video';
             $.ajax({ url: youtubeURL, method: "GET" }).then(function (response) {
                 console.log(response);
                 console.log(response.items[1].id.videoId);
                 var playerId = response.items[1].id.videoId;
                 $("#band-info-div").append("<p>Listen to a sample of " + bandInfo + " here:");
-                $("#band-info-div").append('<iframe width="500" height="315" src="http://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
+                $("#band-info-div").append('<iframe width="500" height="315" src="https://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
             })
         })
+    })
+    $(document).on("click", "#recent_searches", function (event) {
+        $('#modal2').modal();
+        $('#modal2').modal("open");
+    });
+    database.ref().orderByChild("dateAdded").limitToLast(10).on("value", function (childSnapshot) {
+        console.log(childSnapshot.val());
+        $("#recent-searches").empty();
+        for (let val of Object.values(childSnapshot.val())) {
+            console.log(val.band);
+            recentButtons = $("<button>" + val.band + "</button>");
+            $(recentButtons).addClass("waves-effect waves-light btn-large");
+            $("#recent-searches").append(recentButtons);
+            $(recentButtons).addClass("recent-band-return")
+            $(recentButtons).attr("data-band", val.band);
+        };
+    });
+    $(document).on("click", ".recent-band-return", function (event) {
+        var inputRecentBand = $(this).attr("data-band");
+        console.log(inputRecentBand);
+        $("#band-input-label").addClass("active");
+        $("#band-input").val(inputRecentBand);
     })
 
     $(document).on("click", "#recent_searches", function (event) {
@@ -123,24 +142,17 @@ $(document).ready(function () {
             $(recentButtons).attr("data-band", val.band);
         };
     });
-
     $(document).on("click", ".recent-band-return", function (event) {
         var inputRecentBand = $(this).attr("data-band");
         console.log(inputRecentBand);
         $("#band-input-label").addClass("active");
         $("#band-input").val(inputRecentBand);
     })
-
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         $("#jumbotron3").css({
-          "top": ($(window).scrollTop()) + "px",
-          "left": ($(window).scrollLeft()) + "px"
+            "top": ($(window).scrollTop()) + "px",
+            "left": ($(window).scrollLeft()) + "px"
         });
-      });
-   
-
-
-
-
-})
+    });
+});
 

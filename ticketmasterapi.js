@@ -5,7 +5,7 @@ $(document).ready(function () {
     var zipCode = 23113; //user will input this and grab from page
     var searchKey = "";
 
-    var zipURL = "http://maps.googleapis.com/maps/api/geocode/json?address=";
+    var zipURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
     $.ajax({
         type:"GET", url: zipURL+zipCode}
     ).then(function(response) {
