@@ -31,6 +31,10 @@ $(document).ready(function () {
             var band = $("#band-input").val().trim().toUpperCase();
             var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + band + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json"
             $("#ticketmaster-view").prepend("<h5> SHOWS NEAR YOU SIMILAR TO " + band);
+            database.ref().push({
+                band: band,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            });
             // Creating an AJAX call for the specific band button being clicked
             $.ajax({
                 url: queryURL,
@@ -64,20 +68,16 @@ $(document).ready(function () {
                     $(bandButtons).attr("data-band", bandsReturn[i].name)
                     $(".band-return").show(1000);
                 }
-                database.ref().push({
-                    band: band,
-                    dateAdded: firebase.database.ServerValue.TIMESTAMP,
-                });
-                
-                $('#modal2').modal();
-                $('#modal2').modal("open");
+
             })
         }
     })
+
+
+
     $(document).on("click", ".band-return", function (event) {
         var bandInfo = $(this).attr("data-band");
         var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + bandInfo + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json";
-        console.log(bandInfo)
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -100,20 +100,30 @@ $(document).ready(function () {
                 var playerId = response.items[1].id.videoId;
                 $("#band-info-div").append("<p>Listen to a sample of " + bandInfo + " here:");
                 $("#band-info-div").append('<iframe width="500" height="315" src="http://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
+                $("#band-info-div").append("<p id='recent_searches'>Click here to see recent searches by others</p>");
             })
         })
     })
 
-database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
-    console.log(childSnapshot.val());
-    for (let val of Object.values(childSnapshot.val())) {
-        console.log(val.band);
-        recentButtons = $("<button>" + val.band + "</button>");
-        $(recentButtons).addClass("waves-effect waves-light btn-large");
-        $("#recent-searches").append(recentButtons);
-        $(recentButtons).addClass("recent-band-return")
-        $(recentButtons).attr("data-band", val.band);
-    };
-});
+    $(document).on("click", "#recent_searches", function (event) {
+        $('#modal2').modal();
+        $('#modal2').modal("open");
+    });
+
+    database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
+        console.log(childSnapshot.val());
+        $("#recent-searches").empty();
+        for (let val of Object.values(childSnapshot.val())) {
+            console.log(val.band);
+            recentButtons = $("<a>" + val.band + "</a>");
+            $(recentButtons).addClass("waves-effect waves-light btn-large");
+            $("#recent-searches").append(recentButtons);
+            $(recentButtons).addClass("recent-band-return")
+            $(recentButtons).attr("data-band", val.band);
+        };
+    });
+
+
 
 })
+
