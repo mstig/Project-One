@@ -100,7 +100,7 @@ $(document).ready(function () {
                 console.log(response.items[1].id.videoId);
                 var playerId = response.items[1].id.videoId;
                 $("#band-info-div").append("<p>Listen to a sample of " + bandInfo + " here:");
-                $("#band-info-div").append('<iframe width="500" height="315" src="http://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
+                $("#band-info-div").append('<iframe width="500" height="315" src="https://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
             })
         })
     })
