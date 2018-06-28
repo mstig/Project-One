@@ -100,7 +100,6 @@ $(document).ready(function () {
                 var playerId = response.items[1].id.videoId;
                 $("#band-info-div").append("<p>Listen to a sample of " + bandInfo + " here:");
                 $("#band-info-div").append('<iframe width="500" height="315" src="http://www.youtube.com/embed/' + playerId + '" frameborder="0" allowfullscreen></iframe> ');
-                $("#band-info-div").append("<p id='recent_searches'>Click here to see recent searches by others</p>");
             })
         })
     })
@@ -115,7 +114,7 @@ $(document).ready(function () {
         $("#recent-searches").empty();
         for (let val of Object.values(childSnapshot.val())) {
             console.log(val.band);
-            recentButtons = $("<a>" + val.band + "</a>");
+            recentButtons = $("<button>" + val.band + "</button>");
             $(recentButtons).addClass("waves-effect waves-light btn-large");
             $("#recent-searches").append(recentButtons);
             $(recentButtons).addClass("recent-band-return")
@@ -127,3 +126,4 @@ $(document).ready(function () {
 
 })
 
+$("#band-info-div").append("");
