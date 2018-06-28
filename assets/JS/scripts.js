@@ -59,11 +59,18 @@ $(document).ready(function () {
                     $("#bands-view").show(1000);
                     bandButtons = $("<button hidden>" + bandsReturn[i].name + "</button>");
                     $(bandButtons).addClass("waves-effect waves-light btn-large");
+                    $(bandButtons).attr("id", "band-button");
                     $("#bands-view").append(bandButtons);
                     $(bandButtons).addClass("band-return")
                     $(bandButtons).attr("data-band", bandsReturn[i].name)
                     $(".band-return").show(1000);
                 }
+                // database.ref().push({
+                //     band: band,
+                //     dateAdded: firebase.database.ServerValue.TIMESTAMP,
+                // });
+                $('#modal2').modal();
+                $('#modal2').modal("open");
             })
         }
     })
