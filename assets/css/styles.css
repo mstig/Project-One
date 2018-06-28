@@ -84,10 +84,22 @@ h1,h3,h4,h5 {
     color: rgba(0, 0, 0, .6);
 }
 
-button hidden {
+#band-button {
     color: black;
     background-color: white;
-    margin: 3px;
+    margin: 6px;
+}
+#band-button:visited {
+    color: whitesmoke;
+    background-color: black;
+}
+#band-button:hover {
+    color: whitesmoke;
+    background-color: black;
+}
+#band-button:active{
+    color: whitesmoke;
+    background-color: black;
 }
 
 #widget{
