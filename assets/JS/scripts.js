@@ -31,6 +31,10 @@ $(document).ready(function () {
             var band = $("#band-input").val().trim().toUpperCase();
             var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + band + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json"
             $("#ticketmaster-view").prepend("<h5> SHOWS NEAR YOU SIMILAR TO " + band);
+            database.ref().push({
+                band: band,
+                dateAdded: firebase.database.ServerValue.TIMESTAMP,
+            });
             // Creating an AJAX call for the specific band button being clicked
             $.ajax({
                 url: queryURL,
@@ -45,11 +49,11 @@ $(document).ready(function () {
                     $("#bands-view").show(1000);
                     $("#bands-view").append("<h3> No similar artists for  " + band);
                     $("#bands-view").append("<h5> Try searching for another band! ");
-                    $("#widget").append('<div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM" w-keyword="' + bandGenre + '" w-theme="listviewthumbnails" w-colorscheme="light" w-width="300" w-height="600" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_msj025" w-source="" w-latlong="37.5462865,-77.4089139"></div>');
+                    $("#widget").append('<div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM" w-keyword="' + bandGenre + '" w-theme="listviewthumbnails" w-colorscheme="light" w-width="300" w-height="425" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_msj025" w-source="" w-latlong="37.5462865,-77.4089139"></div>');
                     $("#widget").append('<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>');
                     return false;
                 }
-                $("#widget").append('<div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM" w-keyword="' + bandGenre + '" w-theme="listviewthumbnails" w-colorscheme="light" w-width="300" w-height="600" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_msj025" w-source="" w-latlong="37.5462865,-77.4089139"></div>');
+                $("#widget").append('<div w-type="event-discovery" w-tmapikey="ITMP1WL5haYqT4ySnnZVTYi5HEV0QB3M" w-googleapikey="AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM" w-keyword="' + bandGenre + '" w-theme="listviewthumbnails" w-colorscheme="light" w-width="300" w-height="425" w-size="25" w-border="2" w-borderradius="4" w-postalcode="" w-radius="100" w-period="month" w-layout="vertical" w-attractionid="" w-promoterid="" w-venueid="" w-affiliateid="" w-segmentid="" w-proportion="xxl" w-titlelink="off" w-sorting="groupByName" w-id="id_msj025" w-source="" w-latlong="37.5462865,-77.4089139"></div>');
                 $("#widget").append('<script src="https://ticketmaster-api-staging.github.io/products-and-docs/widgets/event-discovery/1.0.0/lib/main-widget.js"></script>');
                 $("#bands-view").append("<h3> SIMILAR ARTISTS TO " + band);
                 $("#bands-view").append("<h5> Click a band to learn more!");
@@ -58,19 +62,23 @@ $(document).ready(function () {
                     $("#enterBand-Div").hide(1000);
                     $("#bands-view").show(1000);
                     bandButtons = $("<button hidden>" + bandsReturn[i].name + "</button>");
+                    $(bandButtons).attr("id", "band-button");
                     $(bandButtons).addClass("waves-effect waves-light btn-large");
                     $("#bands-view").append(bandButtons);
                     $(bandButtons).addClass("band-return")
                     $(bandButtons).attr("data-band", bandsReturn[i].name)
                     $(".band-return").show(1000);
                 }
+
             })
         }
     })
+
+
+
     $(document).on("click", ".band-return", function (event) {
         var bandInfo = $(this).attr("data-band");
         var queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + bandInfo + "&api_key=43aa7275eb736bbda8af4906bb03dfaa&format=json";
-        console.log(bandInfo)
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -81,11 +89,11 @@ $(document).ready(function () {
             console.log(bandPic);
             console.log(bandBio);
             $("#band-info-div").empty();
-            $("#band-info-div").append("<h1>" + bandInfo + "</h1>")
+            $("#band-info-div").append("<h1 class='scroll-head'>" + bandInfo + "</h1>")
             $("<img class='img-thumbnail'>").attr("src", bandPic).appendTo("#band-info-div");
             $("#band-info-div").append("<br>");
             $("#band-info-div").append("<p>" + bandBio + "</p>");
-            $("html, body").animate({ scrollTop: $(document).height() }, "slow");
+            $("html, body").animate({scrollTop: $(".scroll-head").offset().top},'slow');
             var youtubeURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&relevanceLanguage=en&regionCode=US&q=' + bandInfo + '&key=AIzaSyDLaes9_vXmELG_d5SGPPGNelBrWiHIkLM&type=video';
             $.ajax({ url: youtubeURL, method: "GET" }).then(function (response) {
                 console.log(response);
@@ -97,16 +105,42 @@ $(document).ready(function () {
         })
     })
 
-database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
-    console.log(childSnapshot.val());
-    for (let val of Object.values(childSnapshot.val())) {
-        console.log(val.band);
-        recentButtons = $("<button>" + val.band + "</button>");
-        $(recentButtons).addClass("waves-effect waves-light btn-large");
-        $("#recent-searches").append(recentButtons);
-        $(recentButtons).addClass("recent-band-return")
-        $(recentButtons).attr("data-band", val.band);
-    };
-});
+    $(document).on("click", "#recent_searches", function (event) {
+        $('#modal2').modal();
+        $('#modal2').modal("open");
+    });
+
+    database.ref().orderByChild("dateAdded").limitToLast(10).on("value", function (childSnapshot) {
+        console.log(childSnapshot.val());
+        $("#recent-searches").empty();
+        for (let val of Object.values(childSnapshot.val())) {
+            console.log(val.band);
+            recentButtons = $("<button>" + val.band + "</button>");
+            $(recentButtons).attr("id", "band-button2");
+            $(recentButtons).addClass("waves-effect waves-light btn-large");
+            $("#recent-searches").append(recentButtons);
+            $(recentButtons).addClass("recent-band-return")
+            $(recentButtons).attr("data-band", val.band);
+        };
+    });
+
+    $(document).on("click", ".recent-band-return", function (event) {
+        var inputRecentBand = $(this).attr("data-band");
+        console.log(inputRecentBand);
+        $("#band-input-label").addClass("active");
+        $("#band-input").val(inputRecentBand);
+    })
+
+    $(window).scroll(function() {
+        $("#jumbotron3").css({
+          "top": ($(window).scrollTop()) + "px",
+          "left": ($(window).scrollLeft()) + "px"
+        });
+      });
+   
+
+
+
 
 })
+

@@ -3,16 +3,27 @@
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
-        crossorigin="anonymous"></script>
+   
+    <link rel="icon" type="image/gif" href="./assets/images/favicon.gif">
+    <!-- Reset -->
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <!-- Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
+    <!-- Materialize Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- CSS/Style -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <!-- JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 
     <title>Find A Show!</title>
 
@@ -21,9 +32,8 @@
 
 <body>
 
-
-    <div class="container text-center">
-        <div class="row text-center">
+    <div class="container" id="start-container">
+        <div class="row">
             <div class="col-sm-12">
                 <h1 id="startMenu" class="text-center" hidden>Find A Show!</h1>
             </div>
@@ -34,36 +44,49 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <button class="waves-effect waves-light btn-large" id="startBtn" hidden>Get Started</button>
+                <button class="waves-effect waves-light btn-large pulse" id="startBtn" hidden>Get Started!</button>
 
                 <div class="jumbotron" id="jumbotron1" hidden>
 
                     <!-- QUESTION 1: Right/Wrong Elements -->
-                    <div id="enterBand-Div" hidden>
+                    <div  id="enterBand-Div" hidden>
 
                         <h1> Enter Your Favorite Band</h1>
                         <hr>
                         <br>
 
                         <div class="form-group">
-                            <form>
-
-                                <input type="email" class="form-control" id="band-input" aria-describedby="emailHelp" placeholder="Enter a Band!">
-
-
-                                <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
-                            </form>
-
+                            <div class="row">
+                                <form class="col s12">
+                                    <div class"row">
+                                        <div class="input-field col s12 md6 l6 xl6">
+                                            <input type="text" class="form-control" id="band-input" style="margin:10px">
+                                            <label for="band-input" id="band-input-label" style="padding:10px"><i class="material-icons prefix" >group</i>&emsp;&emsp;&emsp;Band Name</label>
+                                        </div>
+                                    </div>
+                                    <div class"row">
+                                        <div class="input-field col s12 md6 l6 xl6">
+                                            <input type="text" class="form-control" id="zip-input" style="margin:10px">
+                                            <label for="zip-input" style="padding:10px"><i class="material-icons prefix">my_location</i>&emsp;&emsp;&emsp;Zip Code</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
+                                </form><br>
+                                <br>
+                                <br>
+                                <button id='recent_searches' class="btn waves-effect waves-light btn-large">Click here to see recent searches by others</button>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>
+
             </div>
 
-
-
-
         </div>
+
     </div>
 
 
@@ -82,7 +105,7 @@
 
         <div class="col-md-4 text-center">
 
-            <div class="jumbotron" id="jumbotron3" class="text-center" hidden>
+            <div class="jumbotron sticky" id="jumbotron3" class="text-center" hidden>
 
                 <div id="ticketmaster-view" class="text-center">
                     <div id="widget"></div>
@@ -100,29 +123,25 @@
 
         </div>
 
-        <div id="modal1" class="modal">
-                <div class="modal-content">
+        <div id="modal1" class="modal bottom-sheet ">
+                <div class="modal-content text-center">
                   <h4>Whoops! You didn't add a band. </h4>
                   <p>Try again so we can find a couple awesome upcoming shows for you!</p>
-                  <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                  </div>
                 </div>
-            
+        
           </div>
 
           <div id="modal2" class="modal bottom-sheet">
-            <div class="modal-content">
-                <table style="width:100%">
-                    <tr id="recent-searches" class="recent-bands">
-    
-                    </tr>
-                  </table>
+            <div class="modal-content text-center">
+                <table id="recent-searches" style="width:100%">
+
+                </table>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+            
         </div>
+    </div>
+
+          
 
 </body>
 <script type="text/javascript" src="./assets/JS/scripts.js"></script>
