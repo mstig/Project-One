@@ -8,7 +8,6 @@ $(document).ready(function () {
         storageBucket: "project-one-uofr-codecamp-6-18.appspot.com",
         messagingSenderId: "308355480486"
     };
-    
     firebase.initializeApp(config);
     var database = firebase.database();
     /// start up game on load
@@ -110,21 +109,4 @@ database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (ch
     };
 });
 
-<<<<<<< HEAD
-    database.ref().orderByChild("dateAdded").limitToLast(5).on("value", function (childSnapshot) {
-        console.log(childSnapshot.val());
-        for (let val of Object.values(childSnapshot.val())) {
-            console.log(val.band);
-            recentButtons = $("<button>" + val.band + "</button>");
-            $(recentButtons).addClass("waves-effect waves-light btn-large");
-            $("#recent-searches").append(recentButtons);
-            $(recentButtons).addClass("recent-band-return")
-            $(recentButtons).attr("data-band", val.name);
-            
-        };
-    });
-
-});
-=======
 })
->>>>>>> 431296959951089a2924dcb311eb0c8f2d700e36
