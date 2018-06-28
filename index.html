@@ -3,7 +3,7 @@
 <html>
 
 <head>
-   
+
     <link rel="icon" type="image/gif" href="./assets/images/favicon.gif">
     <!-- Reset -->
 
@@ -49,7 +49,7 @@
                 <div class="jumbotron" id="jumbotron1" hidden>
 
                     <!-- QUESTION 1: Right/Wrong Elements -->
-                    <div  id="enterBand-Div" hidden>
+                    <div id="enterBand-Div" hidden>
 
                         <h1> Enter Your Favorite Band</h1>
                         <hr>
@@ -58,21 +58,24 @@
                         <div class="form-group">
                             <div class="row">
                                 <form class="col s12">
-                                    <div class"row">
+                                    <div class "row">
                                         <div class="input-field col s12 md6 l6 xl6">
                                             <input type="text" class="form-control" id="band-input" style="margin:10px">
-                                            <label for="band-input" id="band-input-label" style="padding:10px"><i class="material-icons prefix" >group</i>&emsp;&emsp;&emsp;Band Name</label>
+                                            <label for="band-input" id="band-input-label" style="padding:10px">
+                                                <i class="material-icons prefix">group</i>&emsp;&emsp;&emsp;Band Name</label>
                                         </div>
                                     </div>
-                                    <div class"row">
+                                    <div class "row">
                                         <div class="input-field col s12 md6 l6 xl6">
                                             <input type="text" class="form-control" id="zip-input" style="margin:10px">
-                                            <label for="zip-input" style="padding:10px"><i class="material-icons prefix">my_location</i>&emsp;&emsp;&emsp;Zip Code</label>
+                                            <label for="zip-input" style="padding:10px">
+                                                <i class="material-icons prefix">my_location</i>&emsp;&emsp;&emsp;Zip Code</label>
                                         </div>
                                     </div>
                                     <br>
                                     <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
-                                </form><br>
+                                </form>
+                                <br>
                                 <br>
                                 <br>
                                 <button id='recent_searches' class="btn waves-effect waves-light btn-large">Click here to see recent searches by others</button>
@@ -124,27 +127,27 @@
         </div>
 
         <div id="modal1" class="modal">
-                <div class="modal-content">
-                  <h4>Whoops! You didn't add a band. </h4>
-                  <p>Try again so we can find a couple awesome upcoming shows for you!</p>
-                  <div class="modal-footer">
+            <div class="modal-content">
+                <h4>Whoops! You didn't add a band. </h4>
+                <p>Try again so we can find a couple awesome upcoming shows for you!</p>
+                <div class="modal-footer">
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                  </div>
                 </div>
-            
-          </div>
+            </div>
 
-          <div id="modal2" class="modal bottom-sheet">
+        </div>
+
+        <div id="modal2" class="modal bottom-sheet">
             <div class="modal-content">
                 <table id="recent-searches" style="width:100%">
 
                 </table>
             </div>
-            
+
         </div>
     </div>
 
-          
+
 
 </body>
 <script type="text/javascript" src="./assets/JS/scripts.js"></script>
