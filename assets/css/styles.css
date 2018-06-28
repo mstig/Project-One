@@ -44,10 +44,8 @@ h1,h3,h4,h5 {
 
 .jumbotron{
     color:whitesmoke;
-    background-color: rgba(25, 25, 25, 0.8);
-    
+    background-color: rgba(25, 25, 25, 0.8); 
 }
-
 
 .input-field input:focus + label {
     color: rgb(255, 255, 255) !important;
@@ -57,7 +55,25 @@ h1,h3,h4,h5 {
     border-bottom: 1px solid rgb(255, 255, 255) !important;
     box-shadow: 0 1px 0 0 rgb(255, 255, 255) !important;
 }
-  
+
+#submitBandBtn {
+    margin-top: 25px;
+    color: black;
+    background-color: white;
+}
+
+#submitBandBtn:visited {
+    color: whitesmoke;
+    background-color: black;
+}
+#submitBandBtn:hover {
+    color: whitesmoke;
+    background-color: black;
+}
+#submitBandBtn:active{
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .5);
+}
 
 #widget{
     display:flex;
