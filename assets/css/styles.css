@@ -17,6 +17,7 @@ body {
 
 h1,h3,h4,h5 {
     font-family: 'Shrikhand', cursive;
+    color: whitesmoke;
 }
 
 #startMenu {
@@ -37,17 +38,34 @@ h1,h3,h4,h5 {
     color: whitesmoke;
     background-color: black;
 }
+
+#recent_searches {
+    color: black;
+    background-color: white;
+}
+#recent_searches:visited {
+    color: whitesmoke;
+    background-color: black;
+}
+#recent_searches:hover {
+    color: whitesmoke;
+    background-color: black;
+}
 #startBtn:active{
     color: whitesmoke;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: black;
 }
 
 .jumbotron{
     color:whitesmoke;
     background-color: rgba(25, 25, 25, 0.8);
-    
+    border-radius: 25px; 
 }
 
+#jumbotron3 {
+    position: absolute;
+
+}
 
 .input-field input:focus + label {
     color: rgb(255, 255, 255) !important;
@@ -57,7 +75,72 @@ h1,h3,h4,h5 {
     border-bottom: 1px solid rgb(255, 255, 255) !important;
     box-shadow: 0 1px 0 0 rgb(255, 255, 255) !important;
 }
-  
+
+.input-field input[type=text] {
+    color: whitesmoke;
+}
+
+#submitBandBtn {
+    color: black;
+    background-color: white;
+    margin-top: 25px;
+    margin-bottom:25px;
+}
+#submitBandBtn:visited {
+    color: whitesmoke;
+    background-color: black;
+}
+#submitBandBtn:hover {
+    color: whitesmoke;
+    background-color: black;
+}
+#submitBandBtn:active{
+    color: whitesmoke;
+    background-color: black;
+}
+
+
+#jumbotron2 {
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .6);
+    
+}
+
+#band-button2 {
+    color: black;
+    background-color:whitesmoke;
+    margin:6px;
+}
+
+#band-button2:hover {
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#band-button2:active {
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+
+#band-button {
+    color: whitesmoke;
+    background-color: black;
+    margin: 6px;
+}
+
+#band-button:active {
+    color: black;
+    background-color:whitesmoke;
+}
+#band-button:hover {
+    color: black;
+    background-color: whitesmoke;
+}
+
+.band-return {
+    color: whitesmoke;
+}
 
 #widget{
     display:flex;
@@ -68,45 +151,27 @@ h1,h3,h4,h5 {
     margin-left: auto;
     flex-flow: nowrap;
     flex-direction: column;
+}
+
+.modal-close,.modal,.modal-content {
+    color:whitesmoke;
+    background-color: rgba(25, 25, 25, 0.8); 
+    border-top: solid white 1px;
+    
+
+
+
+}
+.open{
+    background-color: rgba(0, 0, 0, 0.00); 
+    border-top: solid white 1px;
     
 }
 
-
-/* #startMenu {
-    font-family: "Shrikhand", cursive;
-    color: rgb(46, 44, 44);
-    background-color: rgba(255, 255, 255, 0.);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: flex-start;
-    
+@media only screen and (max-width: 991px) {
+    #jumbotron3 {
+        position: unset;
+    }
 }
 
-
-h1,h3,h4,h5 {
-    font-family: 'Shrikhand', cursive;
-
-}
-
-#startDiv{
-    border-radius: 50%;
-    
-}
-
-.jumbotron{
-    
-}
-
-#widget{
-    display:flex;
-    justify-content: flex-start;
-    align-content: center;
-    align-items: center;
-    margin-right: auto;
-    margin-left: auto;
-    flex-flow: nowrap;
-    flex-direction: column;
-    
-} */
 
