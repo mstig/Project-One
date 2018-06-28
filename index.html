@@ -3,6 +3,8 @@
 <html>
 
 <head>
+   
+    <link rel="icon" type="image/gif" href="./assets/images/favicon.gif">
     <!-- Reset -->
 
     <!-- Bootstrap -->
@@ -59,7 +61,7 @@
                                     <div class"row">
                                         <div class="input-field col s12 md6 l6 xl6">
                                             <input type="text" class="form-control" id="band-input" style="margin:10px">
-                                            <label for="band-input" style="padding:10px"><i class="material-icons prefix" >group</i>&emsp;&emsp;&emsp;Band Name</label>
+                                            <label for="band-input" id="band-input-label" style="padding:10px"><i class="material-icons prefix" >group</i>&emsp;&emsp;&emsp;Band Name</label>
                                         </div>
                                     </div>
                                     <div class"row">
@@ -71,6 +73,7 @@
                                     <br>
                                     <button id="submitBandBtn" type="submit" class="btn waves-effect waves-light btn-large">Submit</button>
                                 </form><br>
+                                <br>
                                 <br>
                                 <button id='recent_searches' class="btn waves-effect waves-light btn-large">Click here to see recent searches by others</button>
                             </div>
@@ -102,7 +105,7 @@
 
         <div class="col-md-4 text-center">
 
-            <div class="jumbotron" id="jumbotron3" class="text-center" hidden>
+            <div class="jumbotron sticky" id="jumbotron3" class="text-center" hidden>
 
                 <div id="ticketmaster-view" class="text-center">
                     <div id="widget"></div>
@@ -137,9 +140,7 @@
 
                 </table>
             </div>
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+            
         </div>
     </div>
 
