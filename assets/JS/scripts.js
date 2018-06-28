@@ -78,6 +78,7 @@ $(document).ready(function () {
                         $("#enterBand-Div").hide(1000);
                         $("#bands-view").show(1000);
                         bandButtons = $("<button hidden>" + bandsReturn[i].name + "</button>");
+                        $(bandButtons).attr("id", "band-button");
                         $(bandButtons).addClass("waves-effect waves-light btn-large");
                         $("#bands-view").append(bandButtons);
                         $(bandButtons).addClass("band-return")
