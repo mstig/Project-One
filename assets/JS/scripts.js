@@ -121,12 +121,10 @@ $(document).ready(function () {
             })
         })
     })
-
     $(document).on("click", "#recent_searches", function (event) {
         $('#modal2').modal();
         $('#modal2').modal("open");
     });
-
     database.ref().orderByChild("dateAdded").limitToLast(10).on("value", function (childSnapshot) {
         console.log(childSnapshot.val());
         $("#recent-searches").empty();
@@ -139,7 +137,6 @@ $(document).ready(function () {
             $(recentButtons).attr("data-band", val.band);
         };
     });
-
     $(document).on("click", ".recent-band-return", function (event) {
         var inputRecentBand = $(this).attr("data-band");
         console.log(inputRecentBand);
@@ -147,11 +144,35 @@ $(document).ready(function () {
         $("#band-input").val(inputRecentBand);
     })
 
+    $(document).on("click", "#recent_searches", function (event) {
+        $('#modal2').modal();
+        $('#modal2').modal("open");
+    });
 
+    database.ref().orderByChild("dateAdded").limitToLast(10).on("value", function (childSnapshot) {
+        console.log(childSnapshot.val());
+        $("#recent-searches").empty();
+        for (let val of Object.values(childSnapshot.val())) {
+            console.log(val.band);
+            recentButtons = $("<button>" + val.band + "</button>");
+            $(recentButtons).attr("id", "band-button2");
+            $(recentButtons).addClass("waves-effect waves-light btn-large");
+            $("#recent-searches").append(recentButtons);
+            $(recentButtons).addClass("recent-band-return")
+            $(recentButtons).attr("data-band", val.band);
+        };
+    });
+    $(document).on("click", ".recent-band-return", function (event) {
+        var inputRecentBand = $(this).attr("data-band");
+        console.log(inputRecentBand);
+        $("#band-input-label").addClass("active");
+        $("#band-input").val(inputRecentBand);
+    })
+    $(window).scroll(function () {
+        $("#jumbotron3").css({
+            "top": ($(window).scrollTop()) + "px",
+            "left": ($(window).scrollLeft()) + "px"
+        });
+    });
+});
 
-
-
-
-})
-
-$("#band-info-div").append("");

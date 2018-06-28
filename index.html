@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
     <link rel="icon" type="image/gif" href="./assets/images/favicon.gif">
     <!-- Reset -->
-
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
@@ -24,14 +21,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
-
     <title>Find A Show!</title>
-
-
 </head>
-
 <body>
-
     <div class="container" id="start-container">
         <div class="row">
             <div class="col-sm-12">
@@ -39,22 +31,16 @@
             </div>
         </div>
     </div>
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="waves-effect waves-light btn-large pulse" id="startBtn" hidden>Get Started!</button>
-
                 <div class="jumbotron" id="jumbotron1" hidden>
-
                     <!-- QUESTION 1: Right/Wrong Elements -->
                     <div id="enterBand-Div" hidden>
-
                         <h1> Enter Your Favorite Band</h1>
                         <hr>
                         <br>
-
                         <div class="form-group">
                             <div class="row">
                                 <form class="col s12">
@@ -83,74 +69,39 @@
                         </div>
 
                     </div>
-
                 </div>
-
             </div>
-
         </div>
 
     </div>
-
-
     <div class="row">
         <div class="col-md-8 text-center">
-
-
             <div class="jumbotron" id="jumbotron2" hidden>
-
-
                 <div id="bands-view" hidden></div>
                 <div id="band-info-div"></div>
-
             </div>
         </div>
-
         <div class="col-md-4 text-center">
-
             <div class="jumbotron sticky" id="jumbotron3" class="text-center" hidden>
-
                 <div id="ticketmaster-view" class="text-center">
                     <div id="widget"></div>
-
-
-
                 </div>
-
-
-
             </div>
-
-
-
-
         </div>
-
-        <div id="modal1" class="modal">
-            <div class="modal-content">
+        <div id="modal1" class="modal bottom-sheet ">
+            <div class="modal-content text-center">
                 <h4>Whoops! You didn't add a band. </h4>
                 <p>Try again so we can find a couple awesome upcoming shows for you!</p>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                </div>
             </div>
-
         </div>
-
         <div id="modal2" class="modal bottom-sheet">
-            <div class="modal-content">
-                <table id="recent-searches" style="width:100%">
-
-                </table>
+            <div class="modal-content text-center">
+                <table id="recent-searches" style="width:100%"></table>
             </div>
 
         </div>
     </div>
-
-
-
 </body>
 <script type="text/javascript" src="./assets/JS/scripts.js"></script>
-
 
 </html>
