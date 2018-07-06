@@ -93,10 +93,10 @@ $(document).ready(function () {
                         $("#bands-view").show(1000);
                         $("#bands-view").append("<h3> No similar artists for  " + band);
                         $("#bands-view").append("<h5> Try searching for another band! ");
-                        ticketmasterShow(bandGenre, latLong);
 
                          return false;
                     }
+                    ticketmasterShow(bandGenre, latLong);
           
                     // Creates similar-artist buttons with JS animation- loops to create 5 buttons from Last.FM response
                     $("#bands-view").append("<h3> SIMILAR ARTISTS TO " + band);
