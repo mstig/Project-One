@@ -93,7 +93,7 @@ $(document).ready(function () {
                         $("#bands-view").show(1000);
                         $("#bands-view").append("<h3> No similar artists for  " + band);
                         $("#bands-view").append("<h5> Try searching for another band! ");
-
+                        ticketmasterShow(bandGenre, latLong);
                          return false;
                     }
                     ticketmasterShow(bandGenre, latLong);
