@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    
     <!--Favicon-->
     <link rel="icon" type="image/gif" href="./assets/images/favicon.gif">
     <!-- Reset -->
@@ -15,16 +16,23 @@
     <!-- Materialize Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- CSS/Style -->
-    <link rel="stylesheet" type="text/css" href="./assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- js link -->
+    <script type="text/javascript" src="./assets/JS/script.js"></script>
+
+    
     <title>Find A Show!</title>
+
 </head>
+
 <body>
+
     <div class="container" id="start-container">
         <div class="row">
             <div class="col-sm-12">
@@ -32,12 +40,12 @@
             </div>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
                 <button class="waves-effect waves-light btn-large pulse" id="startBtn" hidden>Get Started!</button>
                 <div class="jumbotron" id="jumbotron1" hidden>
-                    <!-- QUESTION 1: Right/Wrong Elements -->
                     <div id="enterBand-Div" hidden>
                         <h1> Enter Your Favorite Band</h1>
                         <hr>
@@ -73,8 +81,8 @@
                 </div>
             </div>
         </div>
-
     </div>
+
     <div class="row">
         <div class="col-md-8 text-center">
             <div class="jumbotron" id="jumbotron2" hidden>
@@ -99,10 +107,11 @@
             <div class="modal-content text-center">
                 <table id="recent-searches" style="width:100%"></table>
             </div>
-
         </div>
     </div>
+
 </body>
-<script type="text/javascript" src="./assets/JS/scripts.js"></script>
+
 
 </html>
+
